@@ -6,18 +6,21 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { registerUser } from "../State/Authentication/Action";
+import { useDispatch } from "react-redux";
 
 const initialValues = {
   fullName: "",
   email: "",
-  paasword: "",
+  password: "",
   role: "ROLE_CUSTOMER",
 };
 
 const RegisterForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmit = (values) => {
-    console.log("form values", values)
+    dispatch(registerUser({ userData: values, navigate }));
   };
   return (
     <div>
