@@ -1,8 +1,11 @@
 import { Divider, FormControl, FormControlLabel, Grid, Radio, RadioGroup,Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import MenuCard from "./MenuCard";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getRestaurantById } from "../State/Restaurant/Action";
 
 const categories=[
     "pizza",
@@ -22,9 +25,25 @@ const menu=[1,1,1,1,1,1,1]
 
 const RestaurantDetails = () => {
     const [foodType, setFoodType]= useState("all")
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const jwt =localStorage.getItem("jwt")
+    const {auth, restaurant} =useSelector(store=>store) 
+
+    const {id,city} = useParams();
+
+    useEffect(()=>{
+    const  reqData={
+        jwt:jwt,
+        restaurantId:id
+    }
+      dispatch(getRestaurantById(reqData))
+    },[])
+
     const handleFilter=(e)=>{
         console.log(e.target.value,e.target.name)
     }
+
   return (
     <div className="px-5 lg:px-20">
       <section>

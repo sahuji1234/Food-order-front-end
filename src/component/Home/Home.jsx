@@ -5,16 +5,17 @@ import RestaurantCard from "../Restaurant/RestaurantCard";
 import Auth from "../Auth/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllRestaurantsAction } from "../State/Restaurant/Action";
+import { useNavigate } from "react-router-dom";
 
 // const restaurants = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 const Home = () => {
+  const navigate=useNavigate()
   const dispatch = useDispatch()
   const jwt = localStorage.getItem("jwt")
   const {restaurant} =useSelector(store=>store)
   useEffect(()=>{
     dispatch(getAllRestaurantsAction(jwt))
   },[])
-
   return (
     <div className="pb-10">
       <section className="banner -z-50 relative flex flex-col justify-center items-center">

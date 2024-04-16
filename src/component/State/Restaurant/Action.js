@@ -50,6 +50,7 @@ export const getAllRestaurantsAction = (token) => {
 
 export const getRestaurantById = (reqData) => {
   return async (dispatch) => {
+    console.log("request data",reqData)
     dispatch({type:GET_RESTAURANT_BY_ID_REQUEST});
     try {
       const response = await api.get(`api/restaurants/${reqData.restaurantId}`, {
@@ -58,6 +59,7 @@ export const getRestaurantById = (reqData) => {
         },
       });
       dispatch({type:GET_RESTAURANT_BY_ID_SUCCESS, payload:response.data});
+      console.log("list of restaurants",response.data)
     } catch (error) {
       console.log("error",error)
       dispatch({type:GET_RESTAURANT_BY_ID_FAILURE, payload:error});
