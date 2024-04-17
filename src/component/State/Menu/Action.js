@@ -1,5 +1,5 @@
 import { type } from "@testing-library/user-event/dist/type";
-import { api } from "../../../config/api";
+import { api } from "../../config/api"
 
 import {
     CREATE_MENU_ITEM_FAILURE,
@@ -44,7 +44,7 @@ export const getMenuItemsByRestaurantId = (reqData) => {
     dispatch({type:GET_MENU_ITEMS_BY_RESTAURANT_ID_REQUEST});
     try {
       const { data } = await api.get(
-        `/api/food/restaurant/${reqData.restaurantId}?vegetarian=${reqData.vegetarian}&nonveg=${reqData.nonveg}
+        `/api/food/restaurant/${reqData.restaurantId}?vegetrairan=${reqData.vegetrairan}&nonveg=${reqData.nonveg}
         &seasonal=${reqData.seasonal}&food_category=${reqData.foodCategory}`,
         {
           headers: {
