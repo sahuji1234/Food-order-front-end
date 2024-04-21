@@ -1,4 +1,4 @@
-import { api } from "../../../config/api";
+import { api } from "../../config/api";
 import { GET_USER_REQUEST } from "../Authentication/ActionType";
 import { CREATE_ORDER_FAILURE, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, GET_USERS_NOTIFICATION_FAILURE, GET_USERS_NOTIFICATION_REQUEST, GET_USERS_NOTIFICATION_SUCCESS, GET_USERS_ORDERS_FAILURE, GET_USERS_ORDERS_REQUEST, GET_USERS_ORDERS_SUCCESS } from "./ActionTypes";
 
@@ -19,7 +19,7 @@ export const createOrder = (reqData) => {
       dispatch({type:CREATE_ORDER_SUCCESS,payload:data});
     } catch (error) {
       console.log("error ",error)
-      dispatch({type:CREATE_ORDER_FAILURE,payload:data});
+      dispatch({type:CREATE_ORDER_FAILURE,payload:error});
     }
   };
 };

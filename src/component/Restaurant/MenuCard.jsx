@@ -14,17 +14,6 @@ import { categorizeIngredients } from "../util/categorizeIngredients";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../State/Cart/Action";
 
-const demo = [
-  {
-    category: "Nuts & seeds",
-    ingredients: ["Cashews"],
-  },
-
-  {
-    category: "Protein",
-    ingredients: ["Grount Chicken", "Bacon strips"],
-  },
-];
 
 const MenuCard = ({ item }) => {
   const [selectedIngredients,setSelectedIngredients]=useState([])
@@ -39,11 +28,11 @@ const MenuCard = ({ item }) => {
   };
 
 const handleAddItemToCart=(e)=>{
-   //e.preventDefault()
+   e.preventDefault()
      const reqData={
       token:localStorage.getItem("jwt"),
       cartItem:{
-        menuItemId:item.id,
+        foodId:item.id,
         quantity:1,
         ingredients:selectedIngredients
       }
